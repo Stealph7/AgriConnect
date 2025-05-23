@@ -1,36 +1,169 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AgriConnect - Plateforme de Commerce Agricole
 
-## Getting Started
+AgriConnect est une plateforme complète qui connecte les producteurs agricoles aux acheteurs, avec des fonctionnalités avancées de gestion des cultures, surveillance par drones et système d'alertes.
 
-First, run the development server:
+## 🌟 Fonctionnalités
 
+- **Gestion des Utilisateurs**
+  - Inscription/Connexion
+  - Rôles : Producteur, Acheteur, Coopérative, Admin
+  - Profils personnalisés
+
+- **Commerce Agricole**
+  - Publication de produits
+  - Système de transactions sécurisées
+  - Négociation des prix
+  - Historique des transactions
+
+- **Surveillance par Drones**
+  - Collecte de données
+  - Analyse des cultures
+  - Rapports détaillés
+  - Alertes automatiques
+
+- **Système de Messagerie**
+  - Chat en temps réel
+  - Notifications
+  - Archivage des conversations
+
+- **Alertes SMS**
+  - Alertes météo
+  - Conseils agricoles
+  - Notifications de transactions
+
+## 🚀 Installation
+
+### Prérequis
+
+- PHP 8.1+
+- Node.js 16+
+- MySQL 8.0+
+- Composer
+- Redis
+
+### Backend (Laravel)
+
+1. Cloner le repository :
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/votre-repo/agriconnect.git
+cd agriconnect/backend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Installer les dépendances :
+```bash
+composer install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configurer l'environnement :
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Configurer la base de données dans .env :
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=agriconnect
+DB_USERNAME=votre_utilisateur
+DB_PASSWORD=votre_mot_de_passe
+```
 
-## Learn More
+5. Migrer la base de données :
+```bash
+php artisan migrate
+```
 
-To learn more about Next.js, take a look at the following resources:
+6. Démarrer le serveur :
+```bash
+php artisan serve
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Frontend (Next.js)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Aller dans le dossier frontend :
+```bash
+cd ../frontend
+```
 
-## Deploy on Vercel
+2. Installer les dépendances :
+```bash
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Configurer l'environnement :
+```bash
+cp .env.example .env.local
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Démarrer le serveur de développement :
+```bash
+npm run dev
+```
+
+## 🔧 Configuration
+
+### Services SMS (Twilio)
+1. Créer un compte Twilio
+2. Configurer les variables d'environnement :
+```
+TWILIO_ACCOUNT_SID=votre_sid
+TWILIO_AUTH_TOKEN=votre_token
+TWILIO_FROM_NUMBER=votre_numero
+```
+
+### Stockage des fichiers (AWS S3)
+1. Créer un bucket S3
+2. Configurer les variables d'environnement :
+```
+AWS_ACCESS_KEY_ID=votre_key
+AWS_SECRET_ACCESS_KEY=votre_secret
+AWS_DEFAULT_REGION=votre_region
+AWS_BUCKET=votre_bucket
+```
+
+## 📱 API Endpoints
+
+Documentation complète de l'API disponible sur : `/api/documentation`
+
+Endpoints principaux :
+- POST `/api/auth/register` - Inscription
+- POST `/api/auth/login` - Connexion
+- GET `/api/products` - Liste des produits
+- POST `/api/transactions` - Créer une transaction
+- GET `/api/drone-data` - Données des drones
+
+## 🔒 Sécurité
+
+- Authentification JWT
+- Validation des requêtes
+- Rate limiting
+- Protection CSRF
+- Sanitization des données
+
+## 🤝 Contribution
+
+1. Fork le projet
+2. Créer une branche (`git checkout -b feature/AmazingFeature`)
+3. Commit les changements (`git commit -m 'Add AmazingFeature'`)
+4. Push la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+## 📄 License
+
+Distribué sous la licence MIT. Voir `LICENSE` pour plus d'informations.
+
+## 📞 Support
+
+Pour toute question ou assistance :
+- Email : support@agriconnect.com
+- Documentation : https://docs.agriconnect.com
+- Issues : https://github.com/votre-repo/agriconnect/issues
+
+## 🙏 Remerciements
+
+- [Laravel](https://laravel.com)
+- [Next.js](https://nextjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Tous nos contributeurs](https://github.com/votre-repo/agriconnect/contributors)
